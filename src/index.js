@@ -23,32 +23,20 @@ let prost = function(elem){
 		})
 return res ;
 }
-let obj = prost(K);
-let arr1 = [];
-let k = 0;
-for (i = 2; i<=N; i++){
-
-	let q = i;
-	for (j in obj ){
-
-		while(q>=j){
-			if (q % j == 0){
-				arr1[k]=j;
-				k++;
-				q=q/j;
-			}else{
-				break;
-			}
-		}
+let obj = prost(K)
+let q = Infinity;
+for (i in obj){
+	let tmp = N;
+	let count = 0;
+	let pow = 1;
+	while (tmp>=1){
+		tmp = Math.floor(N/Math.pow(i,pow));
+		count = count + tmp;
+		pow++;
+	}
+	if (q>count){
+		q=count;
 	}
 }
-	let res1 = {};
-	arr1.forEach(function(e){
-    	res1[e] = 1 + ~~res1[e];
-		})
-j	= Infinity
-for (i in res1){
-	j = Math.min(j ,res1[i]/obj[i])
-}
-return(j)
+return(q)
 }
