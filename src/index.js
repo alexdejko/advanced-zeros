@@ -35,7 +35,7 @@ for (i in obj){
 		pow++;
 	}
 	if (q>count){
-		q=count;
+		q=Math.floor(count/obj[i]);
 	}
 }
 return(q)
